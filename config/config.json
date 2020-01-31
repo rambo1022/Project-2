@@ -2,20 +2,23 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "exampledb",
+    "database": "primetradedb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "testdb",
+    "database": "database_test",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }
