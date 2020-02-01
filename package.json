@@ -25,7 +25,9 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rambo1022/Project-2.git"
