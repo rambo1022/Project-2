@@ -40,56 +40,30 @@
         </div>
 
 
-        <!-- Options HeatMap -->
+        <!-- Card-->
 
 
-        <div class="container">
-            <div class="row">
-                <table style="float: left;" style="display: inline-block;" cellpadding="0" cellspacing="0" border="1"
-                    class="heat-map">
-                    <thead>
-                        <tr>
-                            <th>IV</th>
-                            <th>Calls</th>
-                            <th>Strike</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td id="IVC"></td>
-                            <td id="calloptions"></td>
-                            <td id="strike-price"></td>
-                        </tr>
-                    </tbody>
-                </table>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img id = "NewsLogo" src= ""  style="100%">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 id="NewsTitle" class="card-title"></h5>
+                  <p class="card-text"></p>
+                  <p id="NewsDate" class="card-text"><small class="text-muted"></small></p>
+                </div>
+              </div>
             </div>
-            <table style="float: right;" style="display: inline-block;" cellpadding="0" cellspacing="0" border="1">
-                <thead>
-                    <tr>
-                        <th>Strike</th>
-                        <th>Puts</th>
-                        <th>IV</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="strike-priceP"></td>
-                        <td id="putoptions"></td>
-                        <td id="IV"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    </div>
-
+          </div>
+        
 
 
 
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-
 
         $("#select-stock").on("click", function (event) {
             // Preventing the button from trying to submit the form
@@ -98,7 +72,8 @@
             var inputStock = $("#stock-input").val().trim().toUpperCase()
             // Running the searchStocks function(passing in the symbol as an argument)
             searchStocks(inputStock);
-            getOptions(inputStock);
+            // getOptions(inputStock);
+            Newsfeed(inputStock)
             console.log(inputStock);
         });
         function searchStocks(inputStock) {
@@ -110,7 +85,7 @@
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "ea9381a499msh1c1d7c0f469c737p179f05jsnd2f7d7ffd270"
+                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
                 }
             }
 
@@ -131,11 +106,11 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock + "&date=1575590400",
+                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock + "&date=1581033600",
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "ea9381a499msh1c1d7c0f469c737p179f05jsnd2f7d7ffd270"
+                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
                 }
             }
             //Sets the first box in the Table to the name of the Stock
@@ -153,7 +128,7 @@
                 $("#strike-priceP").empty();
 
                 for (var i = 0; i < optionsarray.length; i++) {
-                    var td = $("<tr>").attr("id","HeatIndex"+i);
+                    var td = $("<tr>").attr("id", "HeatIndex" + i);
                     var addTD = $("#calloptions").add(td);
                     var addTD = $("#IV").add(td);
                     var addTD = $("#IVC").add(td);
@@ -168,7 +143,7 @@
                     $("#strike-price").append(StrikePrice);
                 }
                 for (var i = 0; i < optionsarrayP.length; i++) {
-                    var td = $("<tr>").attr("id","HeadIndex"+i );
+                    var td = $("<tr>").attr("id", "HeadIndex" + i);
                     var addTD = $("#IV").add(td);
                     var addTD = $("#putoptions").add(td);
                     var addTD = $("#strike-priceP").add(td);
@@ -205,16 +180,76 @@
                     console.log(NewArray)
                     if (OI < OIold) {
                         console.log("Works")
-                      
+
                         NewArray[i].addClass("RedHeat")
                     } else {
-                       
+
                         NewArray[i].addClass("GreenHeat")
                     }
                 }
 
             });
         }
+
+        //Newsfeed
+        function Newsfeed(inputStock) {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-newsfeed?category=" + inputStock + "&region=US",
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                var news = Array.from(response.items["result"]);
+                console.log(news)
+                for (var i = 0; i < 1; i++) {
+                var newsTitle = news[1]['title']
+                console.log(newsTitle)
+                var newsLink = news[i]['link']
+                var newsPublisher = news[i]['publisher']
+                $("#NewsTitle").append(newsTitle).text
+                FaviFinder(newsPublisher)
+                
+                }
+               
+                
+
+            });
+
+
+        }
+
+        //Favicon Finder
+        function FaviFinder(newsPublisher) {
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                }
+            }
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                console.log(newsPublisher);
+                var Favicon = response.favicon_url
+                console.log(Favicon);
+                $("<img>").append(Favicon)
+                placeholder(Favicon)
+                $("#NewsLogo").attr("src", Favicon);
+            });
+        }
+        function placeholder() {
+            
+        } 
     </script>
     </div>
 </body>
