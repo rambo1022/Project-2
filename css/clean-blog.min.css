@@ -47,7 +47,10 @@
      font-weight: 700;
      margin-top: 60px
  }
-
+.container1{
+    padding-left: 50px;
+    margin-left: 50px;
+}
  .caption {
      font-size: 14px;
      font-style: italic;
