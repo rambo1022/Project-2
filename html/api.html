@@ -43,214 +43,226 @@
         <!-- Card-->
 
 
-          <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-              <div class="col-md-4">
-                <img id = "NewsLogo" src= ""  style="100%">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 id="NewsTitle" class="card-title"></h5>
-                  <p class="card-text"></p>
-                  <p id="NewsDate" class="card-text"><small class="text-muted"></small></p>
+                <div class="col-md-4">
+                    <img id="NewsLogo" src="">
                 </div>
-              </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 id="NewsTitle" class="card-title"></h5>
+                        <p class="card-text"></p>
+                        <p id="NewsDate" class="card-text"><small class="text-muted"></small></p>
+                    </div>
+                </div>
             </div>
-          </div>
-        
+        </div>
 
 
 
-    <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
 
-        $("#select-stock").on("click", function (event) {
-            // Preventing the button from trying to submit the form
-            event.preventDefault();
-            // Storing the stock name
-            var inputStock = $("#stock-input").val().trim().toUpperCase()
-            // Running the searchStocks function(passing in the symbol as an argument)
-            searchStocks(inputStock);
-            // getOptions(inputStock);
-            Newsfeed(inputStock)
-            console.log(inputStock);
-        });
-        function searchStocks(inputStock) {
-            //Yahoo Finance Api
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail" + "?region=US&lang=en&symbol=" + inputStock,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
+        <!-- JQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
 
-            $.ajax(settings).done(function (response) {
-                console.log(response.quoteData[inputStock]);
-
-                var symbolName = $("<h1>").text(response.quoteData[inputStock].longName);
-                var symbolPrice = $("<h2>").text(response.quoteData[inputStock].regularMarketPrice.raw);
-
-                $("#stock-div").empty();
-                $("#stock-div").append(symbolName, symbolPrice);
-
+            $("#select-stock").on("click", function (event) {
+                // Preventing the button from trying to submit the form
+                event.preventDefault();
+                // Storing the stock name
+                var inputStock = $("#stock-input").val().trim().toUpperCase()
+                // Running the searchStocks function(passing in the symbol as an argument)
+                searchStocks(inputStock);
+                // getOptions(inputStock);
+                Newsfeed(inputStock)
+                GetDetails(inputStock)
+                console.log(inputStock);
             });
-        }
-        //Options 
-        function getOptions(inputStock) {
-            //Yahoo Finance Api
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock + "&date=1581033600",
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-            //Sets the first box in the Table to the name of the Stock
-            $("#stock-name").text(inputStock)
-            $.ajax(settings).done(function (response) {
-                var call = response.contracts['calls'];
-                var optionsarray = Array.from(response.contracts['calls']);
-                var optionsarrayP = Array.from(response.contracts['puts']);
-
-                $("#calloptions").empty();
-                $("#IV").empty();
-                $("#IVC").empty();
-                $("#putoptions").empty();
-                $("#strike-price").empty();
-                $("#strike-priceP").empty();
-
-                for (var i = 0; i < optionsarray.length; i++) {
-                    var td = $("<tr>").attr("id", "HeatIndex" + i);
-                    var addTD = $("#calloptions").add(td);
-                    var addTD = $("#IV").add(td);
-                    var addTD = $("#IVC").add(td);
-                    var addTD = $("#putoptions").add(td);
-                    var addTD = $("#strike-price").add(td);
-                    var addTD = $("#strike-priceP").add(td);
-                    var CallOptions = $("<h2>").text(optionsarray[i]['lastPrice']['fmt']);
-                    var IVC = $("<h2>").text(optionsarray[i]['impliedVolatility']['fmt']);
-                    var StrikePrice = $("<h2>").text(optionsarray[i]['strike']['fmt']);
-                    $("#calloptions").append(CallOptions);
-                    $("#IVC").append(IVC);
-                    $("#strike-price").append(StrikePrice);
-                }
-                for (var i = 0; i < optionsarrayP.length; i++) {
-                    var td = $("<tr>").attr("id", "HeadIndex" + i);
-                    var addTD = $("#IV").add(td);
-                    var addTD = $("#putoptions").add(td);
-                    var addTD = $("#strike-priceP").add(td);
-                    console.log(optionsarrayP.length)
-                    var IV = $("<h2>").text(optionsarrayP[i]['impliedVolatility']['fmt']);
-                    console.log(optionsarrayP[i])
-                    var PutOptions = $("<h2>").text(optionsarrayP[i]['lastPrice']['raw']);
-                    var StrikePriceP = $("<h2>").text(optionsarrayP[i]['strike']['fmt']);
-                    $("#IV").append(IV);
-                    $("#putoptions").append(PutOptions);
-                    $("#strike-priceP").append(StrikePriceP);
-                }
-            });
-
-            $.ajax(settings).done(function (response) {
-
-
-                //Creates an array based of the list of option calls
-
-                var optionsarray = Array.from(response.contracts['puts']);
-
-                for (var i = 0; i < optionsarray.length; i++) {
-                    var iOld = i;
-                    if (i - 1 > 0) {
-                        iOld = i - 1
-                    } else {
-                        iOld = i
-                    }
-                    console.log(i)
-                    console.log(optionsarray[i]['openInterest']);
-                    var OI = (optionsarray[i]['openInterest']['fmt']);
-                    var OIold = (optionsarray[iOld]['openInterest']['fmt']);
-                    var NewArray = Array.from($("#putoptions"))
-                    console.log(NewArray)
-                    if (OI < OIold) {
-                        console.log("Works")
-
-                        NewArray[i].addClass("RedHeat")
-                    } else {
-
-                        NewArray[i].addClass("GreenHeat")
+            function searchStocks(inputStock) {
+                //Yahoo Finance Api
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail" + "?region=US&lang=en&symbol=" + inputStock,
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+                        "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
                     }
                 }
 
-            });
-        }
+                $.ajax(settings).done(function (response) {
+                    console.log(response.quoteData[inputStock]);
 
-        //Newsfeed
-        function Newsfeed(inputStock) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-newsfeed?category=" + inputStock + "&region=US",
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                    var symbolName = $("<h1>").text(response.quoteData[inputStock].longName);
+                    var symbolPrice = $("<h2>").text(response.quoteData[inputStock].regularMarketPrice.raw);
+
+                    $("#stock-div").empty();
+                    $("#stock-div").append(symbolName, symbolPrice);
+
+                });
+            }
+            //Options 
+            function getOptions(inputStock) {
+                //Yahoo Finance Api
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock + "&date=1581033600",
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+                        "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                    }
                 }
+                //Sets the first box in the Table to the name of the Stock
+                $("#stock-name").text(inputStock)
+                $.ajax(settings).done(function (response) {
+                    var call = response.contracts['calls'];
+                    var optionsarray = Array.from(response.contracts['calls']);
+                    var optionsarrayP = Array.from(response.contracts['puts']);
+
+                    $("#calloptions").empty();
+                    $("#IV").empty();
+                    $("#IVC").empty();
+                    $("#putoptions").empty();
+                    $("#strike-price").empty();
+                    $("#strike-priceP").empty();
+
+                    for (var i = 0; i < optionsarray.length; i++) {
+                        var td = $("<tr>").attr("id", "HeatIndex" + i);
+                        var addTD = $("#calloptions").add(td);
+                        var addTD = $("#IV").add(td);
+                        var addTD = $("#IVC").add(td);
+                        var addTD = $("#putoptions").add(td);
+                        var addTD = $("#strike-price").add(td);
+                        var addTD = $("#strike-priceP").add(td);
+                        var CallOptions = $("<h2>").text(optionsarray[i]['lastPrice']['fmt']);
+                        var IVC = $("<h2>").text(optionsarray[i]['impliedVolatility']['fmt']);
+                        var StrikePrice = $("<h2>").text(optionsarray[i]['strike']['fmt']);
+                        $("#calloptions").append(CallOptions);
+                        $("#IVC").append(IVC);
+                        $("#strike-price").append(StrikePrice);
+                    }
+                    for (var i = 0; i < optionsarrayP.length; i++) {
+                        var td = $("<tr>").attr("id", "HeadIndex" + i);
+                        var addTD = $("#IV").add(td);
+                        var addTD = $("#putoptions").add(td);
+                        var addTD = $("#strike-priceP").add(td);
+                        console.log(optionsarrayP.length)
+                        var IV = $("<h2>").text(optionsarrayP[i]['impliedVolatility']['fmt']);
+                        console.log(optionsarrayP[i])
+                        var PutOptions = $("<h2>").text(optionsarrayP[i]['lastPrice']['raw']);
+                        var StrikePriceP = $("<h2>").text(optionsarrayP[i]['strike']['fmt']);
+                        $("#IV").append(IV);
+                        $("#putoptions").append(PutOptions);
+                        $("#strike-priceP").append(StrikePriceP);
+                    }
+                });
+
+                $.ajax(settings).done(function (response) {
+
+
+                    //Creates an array based of the list of option calls
+
+                    var optionsarray = Array.from(response.contracts['puts']);
+
+                    for (var i = 0; i < optionsarray.length; i++) {
+                        var iOld = i;
+                        if (i - 1 > 0) {
+                            iOld = i - 1
+                        } else {
+                            iOld = i
+                        }
+                        console.log(i)
+                        console.log(optionsarray[i]['openInterest']);
+                        var OI = (optionsarray[i]['openInterest']['fmt']);
+                        var OIold = (optionsarray[iOld]['openInterest']['fmt']);
+                        var NewArray = Array.from($("#putoptions"))
+                        console.log(NewArray)
+                        if (OI < OIold) {
+                            console.log("Works")
+
+                            NewArray[i].addClass("RedHeat")
+                        } else {
+
+                            NewArray[i].addClass("GreenHeat")
+                        }
+                    }
+
+                });
             }
 
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                var news = Array.from(response.items["result"]);
-                console.log(news)
-                for (var i = 0; i < 1; i++) {
-                var newsTitle = news[1]['title']
-                console.log(newsTitle)
-                var newsLink = news[i]['link']
-                var newsPublisher = news[i]['publisher']
-                $("#NewsTitle").append(newsTitle).text
-                FaviFinder(newsPublisher)
-                
+            //Newsfeed
+            function Newsfeed(inputStock) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-newsfeed?category=" + inputStock + "&region=US",
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+                        "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                    }
                 }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    var news = Array.from(response.items["result"]);
+                    console.log(news)
+                    for (var i = 0; i < 1; i++) {
+                        var newsTitle = news[1]['title']
+                        console.log(newsTitle)
+                        var newsLink = news[i]['link']
+                        var newsPublisher = news[i]['publisher']
+                        $("#NewsTitle").append(newsTitle).text
+                        FaviFinder(newsPublisher)
+
+                    }
+                });
+            }
                
-                
-
-            });
-
-
-        }
-
-        //Favicon Finder
-        function FaviFinder(newsPublisher) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+            //Favicon Finder
+            function FaviFinder(newsPublisher) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+                        "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                    }
                 }
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    console.log(newsPublisher);
+                    var Favicon = response.favicon_url
+                    console.log(Favicon);
+                    $("<img>").append(Favicon)
+                    $("#NewsLogo").attr("src", Favicon);
+                });
             }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                console.log(newsPublisher);
-                var Favicon = response.favicon_url
-                console.log(Favicon);
-                $("<img>").append(Favicon)
-                placeholder(Favicon)
-                $("#NewsLogo").attr("src", Favicon);
-            });
-        }
-        function placeholder() {
-            
-        } 
-    </script>
+
+            //Get-Details
+            function GetDetails(inputStock) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+                        "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    
+
+                });
+            }
+        </script>
     </div>
 </body>
 
