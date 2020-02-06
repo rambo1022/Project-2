@@ -1,5 +1,5 @@
 {
-  "name": "1-passport-example",
+  "name": "primetradedb",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -15,12 +15,14 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "express-session": "^1.15.6",
+    "i": "^0.3.6",
     "mysql": "^2.18.1",
     "mysql2": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.38.0"
+    "sequelize": "^4.44.3"
   },
   "directories": {
     "test": "test"

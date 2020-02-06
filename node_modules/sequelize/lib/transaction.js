@@ -22,6 +22,7 @@ class Transaction {
   constructor(sequelize, options) {
     this.sequelize = sequelize;
     this.savepoints = [];
+    this._afterCommitHooks = [];
 
     // get dialect specific transaction options
     const transactionOptions = sequelize.dialect.supports.transactionOptions || {};
@@ -71,7 +72,11 @@ class Transaction {
           return this.cleanup();
         }
         return null;
-      });
+      }).tap(
+        () => Utils.Promise.each(
+          this._afterCommitHooks,
+          hook => Promise.resolve(hook.apply(this, [this])))
+      );
   }
 
   /**
@@ -83,6 +88,10 @@ class Transaction {
 
     if (this.finished) {
       return Utils.Promise.reject(new Error('Transaction cannot be rolled back because it has been finished with state: ' + this.finished));
+    }
+
+    if (!this.connection) {
+      return Promise.reject(new Error('Transaction cannot be rolled back because it never started'));
     }
 
     this._clearCls();
@@ -182,6 +191,20 @@ class Transaction {
         cls.set('transaction', null);
       }
     }
+  }
+
+  /**
+   * A hook that is run after a transaction is committed
+   *
+   * @param {Function} fn   A callback function that is called with the committed transaction
+   * @name afterCommit
+   * @memberof Sequelize.Transaction
+   */
+  afterCommit(fn) {
+    if (!fn || typeof fn !== 'function') {
+      throw new Error('"fn" must be a function');
+    }
+    this._afterCommitHooks.push(fn);
   }
 
   /**

@@ -1,24 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "Boca2000",
+    "password": "root",
     "database": "primetradedb",
-    "host": "localhost",
-    "dialect": "mysql"
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 8888
   },
   "test": {
     "username": "root",
-    "password": "Boca2000",
-    "database": "database_test",
-    "host": "localhost",
+    "password": "",
+    "database": "testdb",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false
   },
   "production": {
-    "username": "root",
-    "password": "Boca2000",
-    "database": "database_production",
-    "host": "localhost",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
