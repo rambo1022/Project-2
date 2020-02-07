@@ -3,324 +3,375 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Prime Trade Trading App</title>
+  <title>Prime Trade Trading App</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
-        type='text/css'>
-    <link
-        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-        rel='stylesheet' type='text/css'>
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
 
-    <!-- Custom styles for this template -->
-    <link href="css/prime-trade.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/prime-trade.min.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Prime Trade</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu               
-            </button>
-            <form class="form-inline">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Prime Trade</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+      </button>
+      <form class="form-inline">
 
-                <label for="stock-input">Choose A Stock</label>
+        <label for="stock-input">Choose A Stock</label>
 
-                <input type="text" id="stock-input"><br>
+        <input type="text" id="stock-input"><br>
 
-                <input id="select-stock" type="submit" value="GO!">
-            </form>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tracker.html">Tracker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="heatMap.html">Heat Map</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactUs.html">Contact Us</a>
-                    </li>
-                </ul>
-    </nav>
-    </div>
-    </div>
-    </nav>
+        <input id="select-stock" type="submit" value="GO!">
+      </form>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tracker.html">Tracker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="heatMap.html">Heat Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactUs.html">Contact Us</a>
+          </li>
+        </ul>
+  </nav>
+  </div>
+  </div>
+  </nav>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/background3.jpg')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <div class="site-heading">
-                        <h1>Prime Trade</h1>
-                        <span class="subheading">Innovative leaders in Stock Market Education</span>
-                    </div>
-                </div>
-            </div>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background3.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Prime Trade</h1>
+            <span class="subheading">Innovative leaders in Stock Market Education</span>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
+  <!-- Watchlist -->
+  <header class="masthead" style="background-image: url('img/background3.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <span class="subheading"></span>
+            <h5>Watchlist</h5>
+            <span class="subheading"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <input id="stock-input"  type="text" placeholder="Enter a Stock"
-                    aria-label="Search" value=>
-                <button id="#select-stock"  type="submit">Search</button>
-    <div class="container1">
-        <div class="row">
-            <div class="col-sm-col-sm-2 mx-left">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img id="card-Logo0" src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 id="card-news-title0"></h5><a id="card-news-link0" href=""></a>
-                                <p id="card-text0" class="card-text"></p>
-                                <p id="card-publish-date0" class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row no-gutters">
-                      <div class="col-md-4">
-                          <img id="card-Logo1" src="..." class="card-img">
-                      </div>
-                      <div class="col-md-8">
-                          <div class="card-body">
-                              <h5 id="card-news-title1"></h5><a id="card-news-link1" href=""></a>
-                              <p id="card-text1" class="card-text"></p>
-                              <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
-                          </div>
-                      </div>
-                  </div>
+  <!-- Main Content -->
+  <div class="container1">
+    <div class="row">
+      <div class="col-sm-col-sm-2 mx-left">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="card-Logo0" src="..." class="card-img">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a id="card-news-link0" href=""><h5 id="card-news-title0"></h5></a>
+                <p id="card-text0" class="card-text"></p>
+                <p id="card-publish-date0" class="card-text"><small class="text-muted"></small></p>
               </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img id="card-Logo2" src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 id="card-news-title3"></h5><a id="card-news-link3" href=""></a>
-                                <p id="card-text3" class="card-text"></p>
-                                <p id="card-publish-date3" class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img id="card-Logo4" src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 id="card-news-title4"></h5><a id="card-news-link4" href=""></a>
-                                <p id="card-text4" class="card-text"></p>
-                                <p id="card-publish-date4" class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img id="card-Logo5" src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 id="card-news-title5"></h5><a id="card-news-link5" href=""></a>
-                                <p id="card-text5" class="card-text"></p>
-                                <p id="card-publish-date5" class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-                </div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; PrimeTrade 2020</p>
-                </div>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="card-Logo1" src="..." class="card-img">
             </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a id="card-news-link1" href=""><h5 id="card-news-title1"></h5></a>
+                <p id="card-text1" class="card-text"></p>
+                <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="card-Logo2" src="..." class="card-img">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a id="card-news-link2" href=""><h5 id="card-news-title2"></h5></a>
+                <p id="card-text2" class="card-text"></p>
+                <p id="card-publish-date2" class="card-text"><small class="text-muted"></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="card-Logo3" src="..." class="card-img">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a id="card-news-link3" href=""><h5 id="card-news-title3"></h5></a>
+                <p id="card-text3" class="card-text"></p>
+                <p id="card-publish-date3" class="card-text"><small class="text-muted"></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img id="card-Logo4" src="..." class="card-img">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a id="card-news-link4" href=""><h5 id="card-news-title4"></h5></a>
+                <p id="card-text4" class="card-text"></p>
+                <p id="card-publish-date4" class="card-text"><small class="text-muted"></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Stock Details -->
+
+            <div class="col-lg-8 col-md-6 mx-right">
+              <ul id="" style="list-style-type:none;">
+                <li id=""> Stock Title</li>
+                <li id="">1</li>
+                <li id="">2</li>
+                <li id=""></li>
+                <li id=""></li>
+                <li id=""></li>
+                <li id=""></li>
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 mx-left">
+              <ul id="" style="list-style-type:none;">
+                <li id=""> Other Info</li>
+                <li id="">1</li>
+                <li id="">2</li>
+                <li id=""></li>
+                <li id=""></li>
+                <li id=""></li>
+                <li id=""></li>
+              </ul>
+            </div>
 
 
-
-
-    <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-console.log('loaded')
-        $("#select-stock").on("click", function (event) {
-            // Preventing the button from trying to submit the form
-            event.preventDefault();
-            // Storing the stock name
-            var inputStock = $("#stock-input").val().trim().toUpperCase()
-            // Running the searchStocks function(passing in the symbol as an argument)
-            
-            // getOptions(inputStock);
-            Newsfeed(inputStock)
-            GetDetails(inputStock)
-            console.log(inputStock);
-        });
-        
-        
-
-        //Newsfeed
-        function Newsfeed(inputStock) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-newsfeed?category=" + inputStock + "&region=US",
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                var news = Array.from(response.items["result"]);
-                console.log(news)
-                var newstitles = [];
-                var newslinks = [];
-                var newspublishers = [];
-                var newspublishdate = [];
-                for (var i = 0; i < 6; i++) {
-                    var CardTitle = $("#card-title");
-                    var newsTitle = news[i]['title']
-                    var newsLink = news[i]['link']
-                    var newsPublisher = news[i]['publisher']
-                    newstitles.push(newsTitle)
-                    newslinks.push(newsLink)
-                    newspublishers.push(newspublishers)                   
-                    FaviFinder(newsPublisher, newspublishers)
-                }
-                for (var i = 0; i < newstitles.length; i++) {
-                    $("#card-news-title" + i).append(newstitles[i]).text;
-                    console.log(newstitles[i])
-                }
-                for (var i = 0; i < newslinks.length; i++) {
-                    $("#card-news-link" + i).append(newslinks[i]);
-
-                }
-                for (var i = 0; i < newspublishdate.length; i++) {
-                    $("#card-publish-date" + i).append(newspublishdate[i]);                   
-                }
-                function Favicon(Favicon) {
-                for (var i = 0; i < newspublishers.length; i++) {
-                    $("#card-Logo" + i).attr("img", "src", Favicon );
-                    console.log(newspublishers)
-                }
-              }
-            });
-        }
-
-        //Favicon Finder
-        function FaviFinder(newsPublisher, newspublishers) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-            $.ajax(settings).done(function (response) {
-               
-                var Favicon = response.favicon_url
-                newspublishers.push(Favicon)
-                
-            });
-        }
-
-        //Get-Details
-        function GetDetails(inputStock) {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-
-
-            });
-        }
-    </script>
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; PrimeTrade 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    console.log('loaded')
+    $("#select-stock").on("click", function (event) {
+      // Preventing the button from trying to submit the form
+      event.preventDefault();
+      // Storing the stock name
+      var inputStock = $("#stock-input").val().trim().toUpperCase()
+      // Running the searchStocks function(passing in the symbol as an argument)
+      searchStocks(inputStock)
+      // getOptions(inputStock);
+      Newsfeed(inputStock)
+      GetDetails(inputStock)
+      console.log(inputStock);
+    });
+
+    function searchStocks(inputStock) {
+      //Yahoo Finance Api
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail" + "?region=US&lang=en&symbol=" + inputStock,
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+        }
+      }
+
+      $.ajax(settings).done(function (response) {
+        console.log(response.quoteData[inputStock]);
+        var symbolName = $("<h1>").text(response.quoteData[inputStock].longName);
+        var symbolPrice = $("<h2>").text(response.quoteData[inputStock].regularMarketPrice.raw);
+        $("#stock-div").empty();
+        $("#stock-div").append(symbolName, symbolPrice);
+
+      });
+    }
+
+    //Newsfeed
+    function Newsfeed(inputStock) {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-newsfeed?category=" + inputStock + "&region=US",
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+        }
+      }
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        var news = Array.from(response.items["result"]);
+        console.log(news)
+        var newstitles = [];
+        var newslinks = [];
+        var newspublishers = [];
+        var newspublishdate = [];
+        for (var i = 0; i < 6; i++) {
+          var CardTitle = $("#card-title");
+          var newsTitle = news[i]['title']
+          var newsLink = news[i]['link']
+          var newsPublisher = news[i]['publisher']
+          newstitles.push(newsTitle)
+          newslinks.push(newsLink)
+          newspublishers.push(newspublishers)
+          FaviFinder(newsPublisher, newspublishers)
+        }
+        for (var i = 0; i < newstitles.length; i++) {
+          $("#card-news-title" + i).append(newstitles[i]).text;
+          console.log(newstitles[i])
+        }
+        for (var i = 0; i < newslinks.length; i++) {
+          $("#card-news-link" + i).attr("href",newslinks[i]);
+        }
+        for (var i = 0; i < newspublishdate.length; i++) {
+          $("#card-publish-date" + i).append(newspublishdate[i]);
+        }
+        function Favicon(Favicon) {
+          for (var i = 0; i < newspublishers.length; i++) {
+            $("#card-Logo" + i).attr("img", "src", Favicon);
+            console.log(newspublishers)
+          }
+        }
+      });
+    }
+
+    //Favicon Finder
+    function FaviFinder(newsPublisher, newspublishers) {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+        }
+      }
+      $.ajax(settings).done(function (response) {
+        var Favicon = response.favicon_url
+        newspublishers.push(Favicon)
+      });
+    }
+
+    //Get-Details
+    function GetDetails(inputStock) {
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+        }
+      }
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+    }
+  </script>
+  </div>
 </body>
 
 </html>
