@@ -35,13 +35,15 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
+                Menu               
             </button>
             <form class="form-inline">
-                <input id="stock-input"  type="text" placeholder="Enter a Stock"
-                    aria-label="Search" value=>
-                <button id="#select-stock"  type="submit">Search</button>
+
+                <label for="stock-input">Choose A Stock</label>
+
+                <input type="text" id="stock-input"><br>
+
+                <input id="select-stock" type="submit" value="GO!">
             </form>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
@@ -79,23 +81,41 @@
     </header>
 
     <!-- Main Content -->
+    <input id="stock-input"  type="text" placeholder="Enter a Stock"
+                    aria-label="Search" value=>
+                <button id="#select-stock"  type="submit">Search</button>
     <div class="container1">
         <div class="row">
             <div class="col-sm-col-sm-2 mx-left">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img id="card-Logo1" src="..." class="card-img">
+                            <img id="card-Logo0" src="..." class="card-img">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-news-title1"><a id="card-news-link1" href=""></a></h5>
-                                <p id="card-text1" class="card-text"></p>
-                                <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
+                                <h5 id="card-news-title0"></h5><a id="card-news-link0" href=""></a>
+                                <p id="card-text0" class="card-text"></p>
+                                <p id="card-publish-date0" class="card-text"><small class="text-muted"></small></p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+                      <div class="col-md-4">
+                          <img id="card-Logo1" src="..." class="card-img">
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 id="card-news-title1"></h5><a id="card-news-link1" href=""></a>
+                              <p id="card-text1" class="card-text"></p>
+                              <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
@@ -104,28 +124,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-news-title2"><a id="card-news-link2" href=""></a></h5>
-                                <p id="card-text2" class="card-text"></p>
-                                <p id="card-publish-date2" class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img id="card-Logo2" src="..." class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-news-title3"><a id="card-news-link3" href=""></a></h5>
+                                <h5 id="card-news-title3"></h5><a id="card-news-link3" href=""></a>
                                 <p id="card-text3" class="card-text"></p>
                                 <p id="card-publish-date3" class="card-text"><small class="text-muted"></small></p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
@@ -133,7 +139,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-news-title4"><a id="card-news-link4" href=""></a></h5>
+                                <h5 id="card-news-title4"></h5><a id="card-news-link4" href=""></a>
                                 <p id="card-text4" class="card-text"></p>
                                 <p id="card-publish-date4" class="card-text"><small class="text-muted"></small></p>
                             </div>
@@ -148,7 +154,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-news-title5"><a id="card-news-link5" href=""></a></h5>
+                                <h5 id="card-news-title5"></h5><a id="card-news-link5" href=""></a>
                                 <p id="card-text5" class="card-text"></p>
                                 <p id="card-publish-date5" class="card-text"><small class="text-muted"></small></p>
                             </div>
@@ -208,133 +214,21 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-
+console.log('loaded')
         $("#select-stock").on("click", function (event) {
             // Preventing the button from trying to submit the form
             event.preventDefault();
             // Storing the stock name
             var inputStock = $("#stock-input").val().trim().toUpperCase()
             // Running the searchStocks function(passing in the symbol as an argument)
-            searchStocks(inputStock);
+            
             // getOptions(inputStock);
             Newsfeed(inputStock)
             GetDetails(inputStock)
             console.log(inputStock);
         });
-        function searchStocks(inputStock) {
-            //Yahoo Finance Api
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail" + "?region=US&lang=en&symbol=" + inputStock,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-
-            $.ajax(settings).done(function (response) {
-                console.log(response.quoteData[inputStock]);
-
-                var symbolName = $("<h1>").text(response.quoteData[inputStock].longName);
-                var symbolPrice = $("<h2>").text(response.quoteData[inputStock].regularMarketPrice.raw);
-
-                $("#stock-div").empty();
-                $("#stock-div").append(symbolName, symbolPrice);
-
-            });
-        }
-        //Options 
-        function getOptions(inputStock) {
-            //Yahoo Finance Api
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock + "&date=1581033600",
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-                }
-            }
-            //Sets the first box in the Table to the name of the Stock
-            $("#stock-name").text(inputStock)
-            $.ajax(settings).done(function (response) {
-                var call = response.contracts['calls'];
-                var optionsarray = Array.from(response.contracts['calls']);
-                var optionsarrayP = Array.from(response.contracts['puts']);
-
-                $("#calloptions").empty();
-                $("#IV").empty();
-                $("#IVC").empty();
-                $("#putoptions").empty();
-                $("#strike-price").empty();
-                $("#strike-priceP").empty();
-
-                for (var i = 0; i < optionsarray.length; i++) {
-                    var td = $("<tr>").attr("id", "HeatIndex" + i);
-                    var addTD = $("#calloptions").add(td);
-                    var addTD = $("#IV").add(td);
-                    var addTD = $("#IVC").add(td);
-                    var addTD = $("#putoptions").add(td);
-                    var addTD = $("#strike-price").add(td);
-                    var addTD = $("#strike-priceP").add(td);
-                    var CallOptions = $("<h2>").text(optionsarray[i]['lastPrice']['fmt']);
-                    var IVC = $("<h2>").text(optionsarray[i]['impliedVolatility']['fmt']);
-                    var StrikePrice = $("<h2>").text(optionsarray[i]['strike']['fmt']);
-                    $("#calloptions").append(CallOptions);
-                    $("#IVC").append(IVC);
-                    $("#strike-price").append(StrikePrice);
-                }
-                for (var i = 0; i < optionsarrayP.length; i++) {
-                    var td = $("<tr>").attr("id", "HeadIndex" + i);
-                    var addTD = $("#IV").add(td);
-                    var addTD = $("#putoptions").add(td);
-                    var addTD = $("#strike-priceP").add(td);
-                    console.log(optionsarrayP.length)
-                    var IV = $("<h2>").text(optionsarrayP[i]['impliedVolatility']['fmt']);
-                    console.log(optionsarrayP[i])
-                    var PutOptions = $("<h2>").text(optionsarrayP[i]['lastPrice']['raw']);
-                    var StrikePriceP = $("<h2>").text(optionsarrayP[i]['strike']['fmt']);
-                    $("#IV").append(IV);
-                    $("#putoptions").append(PutOptions);
-                    $("#strike-priceP").append(StrikePriceP);
-                }
-            });
-
-            $.ajax(settings).done(function (response) {
-
-
-                //Creates an array based of the list of option calls
-
-                var optionsarray = Array.from(response.contracts['puts']);
-
-                for (var i = 0; i < optionsarray.length; i++) {
-                    var iOld = i;
-                    if (i - 1 > 0) {
-                        iOld = i - 1
-                    } else {
-                        iOld = i
-                    }
-                    console.log(i)
-                    console.log(optionsarray[i]['openInterest']);
-                    var OI = (optionsarray[i]['openInterest']['fmt']);
-                    var OIold = (optionsarray[iOld]['openInterest']['fmt']);
-                    var NewArray = Array.from($("#putoptions"))
-                    console.log(NewArray)
-                    if (OI < OIold) {
-                        console.log("Works")
-
-                        NewArray[i].addClass("RedHeat")
-                    } else {
-
-                        NewArray[i].addClass("GreenHeat")
-                    }
-                }
-
-            });
-        }
+        
+        
 
         //Newsfeed
         function Newsfeed(inputStock) {
@@ -356,38 +250,38 @@
                 var newslinks = [];
                 var newspublishers = [];
                 var newspublishdate = [];
-                for (var i = 0; i < news.length; i++) {
+                for (var i = 0; i < 6; i++) {
                     var CardTitle = $("#card-title");
                     var newsTitle = news[i]['title']
                     var newsLink = news[i]['link']
                     var newsPublisher = news[i]['publisher']
                     newstitles.push(newsTitle)
                     newslinks.push(newsLink)
-                    newspublishers.push(newspublishers)
-                    console.log(newsTitle)
-                    FaviFinder(newsPublisher)
+                    newspublishers.push(newspublishers)                   
+                    FaviFinder(newsPublisher, newspublishers)
                 }
                 for (var i = 0; i < newstitles.length; i++) {
-                    $("#card-news-title" + i).append(newstitles).text;
-                    console.log(newsTitle)
+                    $("#card-news-title" + i).append(newstitles[i]).text;
+                    console.log(newstitles[i])
                 }
                 for (var i = 0; i < newslinks.length; i++) {
-                    $("#card-news-link" + i).append(newslinks);
-                    console.log(newsTitle)
+                    $("#card-news-link" + i).append(newslinks[i]);
+
                 }
                 for (var i = 0; i < newspublishdate.length; i++) {
-                    $("#card-publish-date" + i).append(newspublishdate);
-                    console.log(newsTitle)
+                    $("#card-publish-date" + i).append(newspublishdate[i]);                   
                 }
+                function Favicon(Favicon) {
                 for (var i = 0; i < newspublishers.length; i++) {
-                    $("#card-Logo" + i).attr("src", Favicon)
-                    console.log(newsTitle)
+                    $("#card-Logo" + i).attr("img", "src", Favicon );
+                    console.log(newspublishers)
                 }
+              }
             });
         }
 
         //Favicon Finder
-        function FaviFinder(newsPublisher) {
+        function FaviFinder(newsPublisher, newspublishers) {
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -399,13 +293,10 @@
                 }
             }
             $.ajax(settings).done(function (response) {
-                console.log(response);
-                console.log(newsPublisher);
+               
                 var Favicon = response.favicon_url
-                console.log(Favicon);
-
                 newspublishers.push(Favicon)
-                $("#NewsLogo").attr("src", Favicon);
+                
             });
         }
 
