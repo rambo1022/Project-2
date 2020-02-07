@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   // Load profile page and pass in a profile by username
   app.get("/profile/:username", function(req, res) {
-    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbStock) {
+    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbProfile) {
       res.render("profile", {
         profiles: dbProfile
       });
