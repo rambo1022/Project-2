@@ -40,6 +40,10 @@ module.exports = function(app) {
   // Route handlebar testing
   app.get("/test", function(req, res) {
  
+    //db.model2.findAll({}).then(function(dbdata){
+      //so you are asking to view the index.handlebars page and passing all the data from the model2 schema
+    //res.render("index", dbdata);
+    //});
     //res.send("test");
     res.render("404");
   });
