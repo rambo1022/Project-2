@@ -251,6 +251,44 @@
   </footer>
 
 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; PrimeTrade 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
 
 
   <!-- JQuery -->
@@ -266,7 +304,7 @@
       searchStocks(inputStock)
       // getOptions(inputStock);
       Newsfeed(inputStock)
-      GetDetails(inputStock)
+
       console.log(inputStock);
     });
 
@@ -279,7 +317,7 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
 
@@ -295,6 +333,7 @@
 
     //Newsfeed
     function Newsfeed(inputStock) {
+  
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -302,9 +341,10 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
+
       $.ajax(settings).done(function (response) {
         console.log(response);
         var news = Array.from(response.items["result"]);
@@ -320,62 +360,62 @@
           var newsPublisher = news[i]['publisher']
           newstitles.push(newsTitle)
           newslinks.push(newsLink)
-          newspublishers.push(newspublishers)
+          console.log(newsPublisher)
           FaviFinder(newsPublisher, newspublishers)
         }
+
+        for (var i = 0; i < 6; i++) {
+          $('#card-news-title' + i).text("")
+          $("#card-news-link" + i).text("")
+          $("#card-publish-date" + i).text("")
+          console.log(i)
+          if (i === 5) {
+            console.log("I EQUAL 5")
+            OtherLoops()
+          }
+        }
+
+        function OtherLoops(){
+          console.log("OtherLoops Workin")
         for (var i = 0; i < newstitles.length; i++) {
-          $("#card-news-title" + i).append(newstitles[i]).text;
+          $('#card-news-title' + i).append(newstitles[i]).text;
+          console.log(i, "Working")
           console.log(newstitles[i])
         }
         for (var i = 0; i < newslinks.length; i++) {
-          $("#card-news-link" + i).attr("href",newslinks[i]);
+          $("#card-news-link" + i).attr("href", newslinks[i]);
         }
-        for (var i = 0; i < newspublishdate.length; i++) {
+        for (var i = 0; i < newspublishdate.length; i++) {         
           $("#card-publish-date" + i).append(newspublishdate[i]);
         }
-        function Favicon(Favicon) {
-          for (var i = 0; i < newspublishers.length; i++) {
-            $("#card-Logo" + i).attr("img", "src", Favicon);
-            console.log(newspublishers)
+        }
+      });
+    }
+
+     //Favicon Finder
+     function FaviFinder(newsPublisher, newspublishers) {
+          var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher +".com",
+            "method": "GET",
+            "headers": {
+              "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+              "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
+            }
           }
+          $.ajax(settings).done(function (response) {
+            var Favicon = response.favicon_url
+            newspublishers.push(Favicon)
+            for (var i = 0; i < newspublishers.length; i++) {
+            $("#card-Logo"+ i).empty();
+            $("#card-Logo" + i).attr("src", Favicon);
+            console.log(newspublishers)
+            console.log(Favicon)
+          }
+          });
         }
-      });
-    }
 
-    //Favicon Finder
-    function FaviFinder(newsPublisher, newspublishers) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        var Favicon = response.favicon_url
-        newspublishers.push(Favicon)
-      });
-    }
-
-    //Get-Details
-    function GetDetails(inputStock) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
-    }
   </script>
   </div>
 </body>
