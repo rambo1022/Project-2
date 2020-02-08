@@ -1,21 +1,30 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load index page aka login page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
+
+  // Load register page
+  app.get("/register", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/register.html"));
+  });
+
+  // Load profile page and pass in a profile by username
+  app.get("/profile/:username", function(req, res) {
+    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbProfile) {
+      res.render("profile", {
+        profiles: dbProfile
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Load stock page and pass in a stock by id
+  app.get("/stock/:id", function(req, res) {
+    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbStock) {
+      res.render("search", {
+        stocks: dbStock
       });
     });
   });
