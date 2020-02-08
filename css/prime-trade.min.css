@@ -52,6 +52,12 @@
     margin-left: 50px;
     width: 100%;
 }
+
+.container2{
+    padding-left: 50px;
+    margin-left: 50px;
+    width:10%;
+}
  .caption {
      font-size: 14px;
      font-style: italic;
