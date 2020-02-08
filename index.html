@@ -1,6 +1,64 @@
-<!-- Navigation -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Prime Trade Trading App</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/prime-trade.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    {{{navbar}}}
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Prime Trade</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" placeholder="Search" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+      </button>
+      <form class="form-inline">
+        <input type="text" placeholder="Choose A Stock" id="stock-input"><br>
+        <input id="select-stock" type="submit" value="Search">
+      </form>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tracker.html">Tracker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="heatMap.html">Heat Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactUs.html">Contact Us</a>
+          </li>
+        </ul>
+  </nav>
+  </div>
+  </div>
   </nav>
 
   <!-- Page Header -->
@@ -120,6 +178,10 @@
 
   </div>
 
+
+  <div class="container2">
+  </div>
+
         <!-- Stock Details -->
     
             <table class="col-sm-4 col-md-2">
@@ -144,9 +206,6 @@
                 <li id="">6</li>
               </ul>
             </table>
-
-
-     
     
   </div>
 
@@ -204,7 +263,7 @@
       searchStocks(inputStock)
       // getOptions(inputStock);
       Newsfeed(inputStock)
-      GetDetails(inputStock)
+
       console.log(inputStock);
     });
 
@@ -217,7 +276,7 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
 
@@ -233,6 +292,7 @@
 
     //Newsfeed
     function Newsfeed(inputStock) {
+  
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -240,9 +300,10 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
+
       $.ajax(settings).done(function (response) {
         console.log(response);
         var news = Array.from(response.items["result"]);
@@ -258,61 +319,64 @@
           var newsPublisher = news[i]['publisher']
           newstitles.push(newsTitle)
           newslinks.push(newsLink)
-          newspublishers.push(newspublishers)
+          console.log(newsPublisher)
           FaviFinder(newsPublisher, newspublishers)
         }
+
+        for (var i = 0; i < 6; i++) {
+          $('#card-news-title' + i).text("")
+          $("#card-news-link" + i).text("")
+          $("#card-publish-date" + i).text("")
+          console.log(i)
+          if (i === 5) {
+            console.log("I EQUAL 5")
+            OtherLoops()
+          }
+        }
+
+        function OtherLoops(){
+          console.log("OtherLoops Workin")
         for (var i = 0; i < newstitles.length; i++) {
-          $("#card-news-title" + i).append(newstitles[i]).text;
+          $('#card-news-title' + i).append(newstitles[i]).text;
+          console.log(i, "Working")
           console.log(newstitles[i])
         }
         for (var i = 0; i < newslinks.length; i++) {
-          $("#card-news-link" + i).attr("href",newslinks[i]);
+          $("#card-news-link" + i).attr("href", newslinks[i]);
         }
-        for (var i = 0; i < newspublishdate.length; i++) {
+        for (var i = 0; i < newspublishdate.length; i++) {         
           $("#card-publish-date" + i).append(newspublishdate[i]);
         }
-        function Favicon(Favicon) {
-          for (var i = 0; i < newspublishers.length; i++) {
-            $("#card-Logo" + i).attr("img", "src", Favicon);
-            console.log(newspublishers)
+        }
+      });
+    }
+
+     //Favicon Finder
+     function FaviFinder(newsPublisher, newspublishers) {
+          var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher +".com",
+            "method": "GET",
+            "headers": {
+              "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+              "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
+            }
           }
+          $.ajax(settings).done(function (response) {
+            var Favicon = response.favicon_url
+            newspublishers.push(Favicon)
+            for (var i = 0; i < newspublishers.length; i++) {
+            $("#card-Logo"+ i).empty();
+            $("#card-Logo" + i).attr("src", Favicon);
+            console.log(newspublishers)
+            console.log(Favicon)
+          }
+          });
         }
-      });
-    }
 
-    //Favicon Finder
-    function FaviFinder(newsPublisher, newspublishers) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        var Favicon = response.favicon_url
-        newspublishers.push(Favicon)
-      });
-    }
-
-    //Get-Details
-    function GetDetails(inputStock) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
-    }
   </script>
   </div>
+</body>
+
+</html>
