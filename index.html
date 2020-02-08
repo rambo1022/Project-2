@@ -24,6 +24,7 @@
   <!-- Custom styles for this template -->
   <link href="css/prime-trade.min.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -169,7 +170,6 @@
           </div>
         </div>
 
-
                 <!-- Pager -->
                 <div class="clearfix">
                   <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
@@ -186,7 +186,7 @@
     
             <table class="col-sm-4 col-md-2">
               <ul id="" style="list-style-type:none;">
-                <li id=""> Stock Title</li>
+                <li > <h1 id="#stock-title"></h1></li>
                 <li id="">1</li>
                 <li id="">2</li>
                 <li id="">3</li>
@@ -263,7 +263,6 @@
       searchStocks(inputStock)
       // getOptions(inputStock);
       Newsfeed(inputStock)
-
       console.log(inputStock);
     });
 
@@ -281,18 +280,20 @@
       }
 
       $.ajax(settings).done(function (response) {
-        console.log(response.quoteData[inputStock]);
+        console.log(response.quoteData[inputStock].longName);
         var symbolName = $("<h1>").text(response.quoteData[inputStock].longName);
         var symbolPrice = $("<h2>").text(response.quoteData[inputStock].regularMarketPrice.raw);
-        $("#stock-div").empty();
-        $("#stock-div").append(symbolName, symbolPrice);
+        $("#stock-title").html(""); 
+        $("#stock-title").text(response.quoteData[inputStock].longName);
+        console.log(symbolName)
 
+        
       });
     }
 
     //Newsfeed
     function Newsfeed(inputStock) {
-  
+      var unirest = require("unirest");
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -325,7 +326,7 @@
 
         for (var i = 0; i < 6; i++) {
           $('#card-news-title' + i).text("")
-          $("#card-news-link" + i).text("")
+          $("#card-news-link" + i).attr("href", "")
           $("#card-publish-date" + i).text("")
           console.log(i)
           if (i === 5) {
@@ -374,7 +375,6 @@
           }
           });
         }
-
   </script>
   </div>
 </body>
