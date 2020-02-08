@@ -32,18 +32,14 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="index.html">Prime Trade</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      <button class="navbar-toggler navbar-toggler-right" type="button" placeholder="Search" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
         Menu
       </button>
       <form class="form-inline">
-
-        <label for="stock-input">Choose A Stock</label>
-
-        <input type="text" id="stock-input"><br>
-
-        <input id="select-stock" type="submit" value="GO!">
+        <input type="text" placeholder="Choose A Stock" id="stock-input"><br>
+        <input id="select-stock" type="submit" value="Search">
       </form>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -88,7 +84,6 @@
             <span class="subheading"></span>
             <h5>Watchlist</h5>
             <span class="subheading"></span>
-
           </div>
         </div>
       </div>
@@ -98,7 +93,7 @@
   <!-- Main Content -->
   <div class="container1">
     <div class="row">
-      <div class="col-sm-col-sm-2 mx-left">
+      <div class="col-xl-4-col-lg-5">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -106,9 +101,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link0" href="">
-                  <h5 id="card-news-title0"></h5>
-                </a>
+                <a id="card-news-link0" href=""><h5 id="card-news-title0"></h5></a>
                 <p id="card-text0" class="card-text"></p>
                 <p id="card-publish-date0" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -123,9 +116,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link1" href="">
-                  <h5 id="card-news-title1"></h5>
-                </a>
+                <a id="card-news-link1" href=""><h5 id="card-news-title1"></h5></a>
                 <p id="card-text1" class="card-text"></p>
                 <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -140,9 +131,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link2" href="">
-                  <h5 id="card-news-title2"></h5>
-                </a>
+                <a id="card-news-link2" href=""><h5 id="card-news-title2"></h5></a>
                 <p id="card-text2" class="card-text"></p>
                 <p id="card-publish-date2" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -157,9 +146,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link3" href="">
-                  <h5 id="card-news-title3"></h5>
-                </a>
+                <a id="card-news-link3" href=""><h5 id="card-news-title3"></h5></a>
                 <p id="card-text3" class="card-text"></p>
                 <p id="card-publish-date3" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -174,48 +161,90 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link4" href="">
-                  <h5 id="card-news-title4"></h5>
-                </a>
+                <a id="card-news-link4" href=""><h5 id="card-news-title4"></h5></a>
                 <p id="card-text4" class="card-text"></p>
                 <p id="card-publish-date4" class="card-text"><small class="text-muted"></small></p>
               </div>
             </div>
           </div>
         </div>
+
+
+                <!-- Pager -->
+                <div class="clearfix">
+                  <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                </div>
+        
+
+  </div>
+
         <!-- Stock Details -->
+    
+            <table class="col-sm-4 col-md-2">
+              <ul id="" style="list-style-type:none;">
+                <li id=""> Stock Title</li>
+                <li id="">1</li>
+                <li id="">2</li>
+                <li id="">3</li>
+                <li id="">4</li>
+                <li id="">5</li>
+                <li id="">6</li>
+              </ul>
+            </table>
+            <table class="col-sm-4 col-md-2 mx-left">
+              <ul id="" style="list-style-type:none;">
+                <li id=""> Other Info</li>
+                <li id="">1</li>
+                <li id="">2</li>
+                <li id="">3</li>
+                <li id="">4</li>
+                <li id="">5</li>
+                <li id="">6</li>
+              </ul>
+            </table>
 
-        <div class="col-lg-8 col-md-6 mx-right">
-          <ul id="" style="list-style-type:none;">
-            <li id=""> Stock Title</li>
-            <li id="">1</li>
-            <li id="">2</li>
-            <li id=""></li>
-            <li id=""></li>
-            <li id=""></li>
-            <li id=""></li>
+
+     
+    
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
           </ul>
-        </div>
-        <div class="col-lg-4 col-md-6 mx-left">
-          <ul id="" style="list-style-type:none;">
-            <li id=""> Other Info</li>
-            <li id="">1</li>
-            <li id="">2</li>
-            <li id=""></li>
-            <li id=""></li>
-            <li id=""></li>
-            <li id=""></li>
-          </ul>
-        </div>
-
-
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          <p class="copyright text-muted">Copyright &copy; PrimeTrade 2020</p>
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 
 
   <!-- Footer -->
@@ -311,7 +340,7 @@
           "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
-      
+
       $.ajax(settings).done(function (response) {
         console.log(response);
         var news = Array.from(response.items["result"]);
