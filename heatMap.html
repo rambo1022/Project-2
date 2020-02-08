@@ -150,7 +150,7 @@
               "method": "GET",
               "headers": {
                 "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
               }
             }
 
@@ -167,16 +167,17 @@
           }
           //Options 
           function getOptions(inputStock) {
+            console.log("Got Options")
             //Yahoo Finance Api
             var settings = {
               "async": true,
               "crossDomain": true,
               "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-options?symbol=" + inputStock +
-                "&date=1581033600",
+                "&date=1581638400",
               "method": "GET",
               "headers": {
                 "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-                "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+                "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
               }
             }
             //Sets the first box in the Table to the name of the Stock
@@ -222,38 +223,6 @@
                 $("#putoptions").append(PutOptions);
                 $("#strike-priceP").append(StrikePriceP);
               }
-            });
-
-            $.ajax(settings).done(function (response) {
-
-
-              //Creates an array based of the list of option calls
-
-              var optionsarray = Array.from(response.contracts['puts']);
-
-              for (var i = 0; i < optionsarray.length; i++) {
-                var iOld = i;
-                if (i - 1 > 0) {
-                  iOld = i - 1
-                } else {
-                  iOld = i
-                }
-                console.log(i)
-                console.log(optionsarray[i]['openInterest']);
-                var OI = (optionsarray[i]['openInterest']['fmt']);
-                var OIold = (optionsarray[iOld]['openInterest']['fmt']);
-                var NewArray = Array.from($("#putoptions"))
-                console.log(NewArray)
-                if (OI < OIold) {
-                  console.log("Works")
-
-                  NewArray[i].addClass("RedHeat")
-                } else {
-
-                  NewArray[i].addClass("GreenHeat")
-                }
-              }
-
             });
           }
         </script>

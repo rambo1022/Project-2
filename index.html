@@ -88,6 +88,7 @@
             <span class="subheading"></span>
             <h5>Watchlist</h5>
             <span class="subheading"></span>
+
           </div>
         </div>
       </div>
@@ -105,7 +106,9 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link0" href=""><h5 id="card-news-title0"></h5></a>
+                <a id="card-news-link0" href="">
+                  <h5 id="card-news-title0"></h5>
+                </a>
                 <p id="card-text0" class="card-text"></p>
                 <p id="card-publish-date0" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -120,7 +123,9 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link1" href=""><h5 id="card-news-title1"></h5></a>
+                <a id="card-news-link1" href="">
+                  <h5 id="card-news-title1"></h5>
+                </a>
                 <p id="card-text1" class="card-text"></p>
                 <p id="card-publish-date1" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -135,7 +140,9 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link2" href=""><h5 id="card-news-title2"></h5></a>
+                <a id="card-news-link2" href="">
+                  <h5 id="card-news-title2"></h5>
+                </a>
                 <p id="card-text2" class="card-text"></p>
                 <p id="card-publish-date2" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -150,7 +157,9 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link3" href=""><h5 id="card-news-title3"></h5></a>
+                <a id="card-news-link3" href="">
+                  <h5 id="card-news-title3"></h5>
+                </a>
                 <p id="card-text3" class="card-text"></p>
                 <p id="card-publish-date3" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -165,7 +174,9 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <a id="card-news-link4" href=""><h5 id="card-news-title4"></h5></a>
+                <a id="card-news-link4" href="">
+                  <h5 id="card-news-title4"></h5>
+                </a>
                 <p id="card-text4" class="card-text"></p>
                 <p id="card-publish-date4" class="card-text"><small class="text-muted"></small></p>
               </div>
@@ -174,28 +185,28 @@
         </div>
         <!-- Stock Details -->
 
-            <div class="col-lg-8 col-md-6 mx-right">
-              <ul id="" style="list-style-type:none;">
-                <li id=""> Stock Title</li>
-                <li id="">1</li>
-                <li id="">2</li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-              </ul>
-            </div>
-            <div class="col-lg-4 col-md-6 mx-left">
-              <ul id="" style="list-style-type:none;">
-                <li id=""> Other Info</li>
-                <li id="">1</li>
-                <li id="">2</li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-              </ul>
-            </div>
+        <div class="col-lg-8 col-md-6 mx-right">
+          <ul id="" style="list-style-type:none;">
+            <li id=""> Stock Title</li>
+            <li id="">1</li>
+            <li id="">2</li>
+            <li id=""></li>
+            <li id=""></li>
+            <li id=""></li>
+            <li id=""></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mx-left">
+          <ul id="" style="list-style-type:none;">
+            <li id=""> Other Info</li>
+            <li id="">1</li>
+            <li id="">2</li>
+            <li id=""></li>
+            <li id=""></li>
+            <li id=""></li>
+            <li id=""></li>
+          </ul>
+        </div>
 
 
         <!-- Pager -->
@@ -260,7 +271,7 @@
       searchStocks(inputStock)
       // getOptions(inputStock);
       Newsfeed(inputStock)
-      GetDetails(inputStock)
+
       console.log(inputStock);
     });
 
@@ -273,7 +284,7 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
 
@@ -289,6 +300,7 @@
 
     //Newsfeed
     function Newsfeed(inputStock) {
+  
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -296,9 +308,10 @@
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
+          "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
         }
       }
+      
       $.ajax(settings).done(function (response) {
         console.log(response);
         var news = Array.from(response.items["result"]);
@@ -314,62 +327,62 @@
           var newsPublisher = news[i]['publisher']
           newstitles.push(newsTitle)
           newslinks.push(newsLink)
-          newspublishers.push(newspublishers)
+          console.log(newsPublisher)
           FaviFinder(newsPublisher, newspublishers)
         }
+
+        for (var i = 0; i < 6; i++) {
+          $('#card-news-title' + i).text("")
+          $("#card-news-link" + i).text("")
+          $("#card-publish-date" + i).text("")
+          console.log(i)
+          if (i === 5) {
+            console.log("I EQUAL 5")
+            OtherLoops()
+          }
+        }
+
+        function OtherLoops(){
+          console.log("OtherLoops Workin")
         for (var i = 0; i < newstitles.length; i++) {
-          $("#card-news-title" + i).append(newstitles[i]).text;
+          $('#card-news-title' + i).append(newstitles[i]).text;
+          console.log(i, "Working")
           console.log(newstitles[i])
         }
         for (var i = 0; i < newslinks.length; i++) {
-          $("#card-news-link" + i).attr("href",newslinks[i]);
+          $("#card-news-link" + i).attr("href", newslinks[i]);
         }
-        for (var i = 0; i < newspublishdate.length; i++) {
+        for (var i = 0; i < newspublishdate.length; i++) {         
           $("#card-publish-date" + i).append(newspublishdate[i]);
         }
-        function Favicon(Favicon) {
-          for (var i = 0; i < newspublishers.length; i++) {
-            $("#card-Logo" + i).attr("img", "src", Favicon);
-            console.log(newspublishers)
+        }
+      });
+    }
+
+     //Favicon Finder
+     function FaviFinder(newsPublisher, newspublishers) {
+          var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher +".com",
+            "method": "GET",
+            "headers": {
+              "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
+              "x-rapidapi-key": "f1cb5e0899msh07877f4406f9d9ep1d2fe0jsn1279f270ffd5"
+            }
           }
+          $.ajax(settings).done(function (response) {
+            var Favicon = response.favicon_url
+            newspublishers.push(Favicon)
+            for (var i = 0; i < newspublishers.length; i++) {
+            $("#card-Logo"+ i).empty();
+            $("#card-Logo" + i).attr("src", Favicon);
+            console.log(newspublishers)
+            console.log(Favicon)
+          }
+          });
         }
-      });
-    }
 
-    //Favicon Finder
-    function FaviFinder(newsPublisher, newspublishers) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://faviconfinder.p.rapidapi.com/faviconurl/?url=https://www." + newsPublisher,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "faviconfinder.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        var Favicon = response.favicon_url
-        newspublishers.push(Favicon)
-      });
-    }
-
-    //Get-Details
-    function GetDetails(inputStock) {
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?region=US&lang=en&symbol=" + inputStock,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-          "x-rapidapi-key": "56d4ee9cfbmsh3f02729662260f9p141ca2jsnffa954ca7211"
-        }
-      }
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
-    }
   </script>
   </div>
 </body>
