@@ -32,18 +32,14 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="index.html">Prime Trade</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      <button class="navbar-toggler navbar-toggler-right" type="button" placeholder="Search" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
         Menu
       </button>
       <form class="form-inline">
-
-        <label for="stock-input">Choose A Stock</label>
-
-        <input type="text" id="stock-input"><br>
-
-        <input id="select-stock" type="submit" value="GO!">
+        <input type="text" placeholder="Choose A Stock" id="stock-input"><br>
+        <input id="select-stock" type="submit" value="Search">
       </form>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -97,7 +93,7 @@
   <!-- Main Content -->
   <div class="container1">
     <div class="row">
-      <div class="col-sm-col-sm-2 mx-left">
+      <div class="col-xl-4-col-lg-5">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -172,38 +168,44 @@
             </div>
           </div>
         </div>
-        <!-- Stock Details -->
 
-            <div class="col-lg-8 col-md-6 mx-right">
+
+                <!-- Pager -->
+                <div class="clearfix">
+                  <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                </div>
+        
+
+  </div>
+
+        <!-- Stock Details -->
+    
+            <table class="col-sm-4 col-md-2">
               <ul id="" style="list-style-type:none;">
                 <li id=""> Stock Title</li>
                 <li id="">1</li>
                 <li id="">2</li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
+                <li id="">3</li>
+                <li id="">4</li>
+                <li id="">5</li>
+                <li id="">6</li>
               </ul>
-            </div>
-            <div class="col-lg-4 col-md-6 mx-left">
+            </table>
+            <table class="col-sm-4 col-md-2 mx-left">
               <ul id="" style="list-style-type:none;">
                 <li id=""> Other Info</li>
                 <li id="">1</li>
                 <li id="">2</li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
-                <li id=""></li>
+                <li id="">3</li>
+                <li id="">4</li>
+                <li id="">5</li>
+                <li id="">6</li>
               </ul>
-            </div>
+            </table>
 
 
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-      </div>
-    </div>
+     
+    
   </div>
 
 
