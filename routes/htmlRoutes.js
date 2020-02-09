@@ -1,31 +1,31 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page aka login page
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-  });
-
-  // Load register page
-  app.get("/register", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/register.html"));
-  });
-
-  // Load profile page and pass in a profile by username
-  app.get("/profile/:username", function(req, res) {
-    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbProfile) {
-      res.render("profile", {
-        profiles: dbProfile
-      });
+  // Load index page
+  app.get("/home", function(req, res) {
+    res.render("index", {
+      title: "Home Page"
     });
   });
 
-  // Load stock page and pass in a stock by id
-  app.get("/stock/:id", function(req, res) {
-    db.Stock.findOne({ where: { id: req.params.id } }).then(function(dbStock) {
-      res.render("search", {
-        stocks: dbStock
-      });
+  // Load tracker page
+  app.get("/tracker", function(req, res) {
+    res.render("tracker", {
+      title: "Tracker"
+    });
+  });
+
+  // Load heat map page
+  app.get("/heatmap", function(req, res) {
+    res.render("heatMap", {
+      title: "Heat Map"
+    });
+  });
+
+  // Load contact us page
+  app.get("/contactus", function(req, res) {
+    res.render("contactUs", {
+      title: "Contact Us"
     });
   });
 
