@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   // Add a new stock to the list
   app.post("/api/stocks", function(req, res) {
-    db.Stock.create(req.body).then(function(dbStoc) {
+    db.Stock.create(req.body).then(function(dbStock) {
       res.json(dbStock);
     });
   });
