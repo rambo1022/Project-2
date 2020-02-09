@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Prime Trade Trading App</title>
+  <title>We Tried! (Trading App)</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="css/prime-trade.min.css" rel="stylesheet">
+  <link href="public\styles\css\prime-trade.css" rel="stylesheet">
 
 
 </head>
@@ -63,21 +63,22 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/background3.jpg')">
+  <header class="masthead" style="background-image: url('public\img\background3.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Prime Trade</h1>
+            <h1>Prime Trade</h1> 
             <span class="subheading">Innovative leaders in Stock Market Education</span>
           </div>
         </div>
       </div>
     </div>
   </header>
+  
   <!-- Watchlist -->
-  <header class="masthead" style="background-image: url('img/background3.jpg')">
+  <header class="masthead" style="background-image: url('public\img\background3.jpg')">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -293,7 +294,7 @@
 
     //Newsfeed
     function Newsfeed(inputStock) {
-      var unirest = require("unirest");
+      
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -373,7 +374,7 @@
             console.log(newspublishers)
             console.log(Favicon)
           }
-          });
+          }); 
         }
   </script>
   </div>

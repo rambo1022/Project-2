@@ -172,38 +172,6 @@
                 $("#strike-priceP").append(StrikePriceP);
               }
             });
-
-            $.ajax(settings).done(function (response) {
-
-
-              //Creates an array based of the list of option calls
-
-              var optionsarray = Array.from(response.contracts['puts']);
-
-              for (var i = 0; i < optionsarray.length; i++) {
-                var iOld = i;
-                if (i - 1 > 0) {
-                  iOld = i - 1
-                } else {
-                  iOld = i
-                }
-                console.log(i)
-                console.log(optionsarray[i]['openInterest']);
-                var OI = (optionsarray[i]['openInterest']['fmt']);
-                var OIold = (optionsarray[iOld]['openInterest']['fmt']);
-                var NewArray = Array.from($("#putoptions"))
-                console.log(NewArray)
-                if (OI < OIold) {
-                  console.log("Works")
-
-                  NewArray[i].addClass("RedHeat")
-                } else {
-
-                  NewArray[i].addClass("GreenHeat")
-                }
-              }
-
-            });
           }
         </script>
     </div>
