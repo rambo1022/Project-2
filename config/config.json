@@ -5,11 +5,11 @@
     "database": "primetradedb",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "port": 8888
+    "port": 3306
   },
   "test": {
     "username": "root",
-    "password": "",
+    "password": null,
     "database": "testdb",
     "host": "127.0.0.1",
     "dialect": "mysql",
