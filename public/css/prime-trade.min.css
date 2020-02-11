@@ -16,7 +16,13 @@
  p a {
      text-decoration: underline
  }
-
+ .Green{
+    color: green;
+    }
+    
+    .Red{
+      color: red;
+      }
  h1,
  h2,
  h3,

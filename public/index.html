@@ -23,7 +23,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/prime-trade.min.css" rel="stylesheet">
-  <link href="public/css/style.css" type="text/css" rel="stylesheet">
+
 
 </head>
 
@@ -82,7 +82,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <span class="subheading"></span>
+            <span id="Watchlist" class="subheading"></span>
             <h5>Watchlist</h5>
 
           </div>
@@ -226,10 +226,6 @@
 
       <table class="col-sm-4 col-md-2">
         <tbody>
-          <tr class="">
-            <td> <span id="stock-title"></span> </td>
-            <td><span id="stock-price"></span></td>
-          </tr>
           <tr>
             <td><span>Daily High</span> </td>
             <td><span id="stock-DailyHigh"></span></td>
@@ -262,7 +258,7 @@
             <td> <span></span><button id="Button-Watchlist">+</button> </td>
             <td> Add to Watchlist </td>
           </tr>
-          
+
         </tbody>
       </table>
 
@@ -313,6 +309,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       console.log('loaded')
+
       $("#select-stock").on("click", function (event) {
         // Preventing the button from trying to submit the form
         event.preventDefault();
@@ -341,6 +338,8 @@
         $.ajax(settings).done(function (response) {
           console.log(response.quoteData[inputStock].longName);
           var symbolName = $("<h5>").text(response.quoteData[inputStock].longName);
+          var ticker = $("<h5>").text(response.price.symbol);
+          ticker.addClass("ST") 
           var symbolPrice = $("<h5>").text(response.quoteData[inputStock].regularMarketPrice.raw);
           var SymbolPriceData = response.quoteData[inputStock].regularMarketOpen.raw;
           var MarketOpen = $("<h5>").text(response.quoteData[inputStock].regularMarketOpen.raw);
@@ -372,7 +371,7 @@
           $("#stock-AvgVolume").append(AverageVolume10);
           $("#stock-FPE").html("");
           $("#stock-FPE").append(ForwardPE);
-
+          console.log(ticker)
           if (SymbolPriceData > MarketOpenData) {
             console.log("GREEN")
             $("#stock-price").addClass("Green")
@@ -380,14 +379,11 @@
             console.log("RED")
             $("#stock-price").addClass("Red")
           }
-
-
         });
       }
 
       //Newsfeed
       function Newsfeed(inputStock) {
-
         var settings = {
           "async": true,
           "crossDomain": true,
@@ -411,7 +407,7 @@
             var CardTitle = $("#card-title");
             var newsTitle = news[i]['title']
             var newsLink = news[i]['link']
-            var newsPublisher = news[i]['publisher']
+            var newsPublisher = news[i]['publisher'];
             newstitles.push(newsTitle)
             newslinks.push(newsLink)
             console.log(newsPublisher)
@@ -422,6 +418,7 @@
             $('#card-news-title' + i).text("")
             $("#card-news-link" + i).attr("href", "")
             $("#card-publish-date" + i).text("")
+            $("#card-Logo" + i).attr("src", "");
             console.log(i)
             if (i === 5) {
               console.log("I EQUAL 5")
@@ -441,6 +438,7 @@
             }
             for (var i = 0; i < newspublishdate.length; i++) {
               $("#card-publish-date" + i).append(newspublishdate[i]);
+              console.log(newspublishdate)
             }
           }
         });
@@ -462,13 +460,23 @@
           var Favicon = response.favicon_url
           newspublishers.push(Favicon)
           for (var i = 0; i < newspublishers.length; i++) {
-            $("#card-Logo" + i).empty();
-            $("#card-Logo" + i).attr("src", Favicon);
+            $("#card-Logo" + i).attr("src", newspublishers[i]);
             console.log(newspublishers)
             console.log(Favicon)
           }
         });
       }
+
+      //Watchlist
+      $("#Button-Watchlist").on("click", function (ticker) {
+        console.log("CLICKED")
+        var StockButton = $("<button>").text($("#stock-title"))
+        var stocktext = ($(".ST")).text()
+        StockButton.addClass("WatchListButton")
+        StockButton.text($("#stock-title"))
+        $("#Watchlist").html(stocktext)
+        console.log(stocktext)
+      });
     </script>
   </div>
 </body>
